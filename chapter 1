@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 2 – Probability</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --card:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.18);
+  --blue:#38bdf8;
+  --violet:#a78bfa;
+  --pink:#f472b6;
+  --text:#e5e7eb;
+}
+
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#020617;
+  color:var(--text);
+  overflow:auto;
+}
+
+/* ===== PROBABILITY / STATISTICS BACKGROUND ===== */
+canvas#statsBG{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+}
+
+.bg-overlay{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(56,189,248,.10), transparent 55%),
+    radial-gradient(circle at 85% 75%, rgba(167,139,250,.10), transparent 55%);
+  z-index:-1;
+  pointer-events:none;
+}
+
+/* CONTENT */
+section{
+  max-width:1300px;
+  margin:auto;
+  padding:80px 30px;
+}
+
+h2{
+  font-size:48px;
+  text-align:center;
+  background:linear-gradient(90deg,var(--blue),var(--violet),var(--pink));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:70px;
+}
+
+.card{
+  background:var(--card);
+  backdrop-filter:blur(18px);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:46px;
+  margin-bottom:55px;
+  box-shadow:0 18px 45px rgba(0,0,0,.45);
+}
+
+.card h3{
+  font-size:30px;
+  margin-bottom:18px;
+}
+
+p,li{
+  color:#dbeafe;
+  line-height:1.9;
+  font-size:16.5px;
+}
+
+ul{margin-top:14px;}
+
+details{
+  margin-top:22px;
+  background:rgba(255,255,255,0.07);
+  border-radius:14px;
+  padding:18px 22px;
+  border:1px solid var(--border);
+}
+
+details[open]{
+  box-shadow:0 0 20px rgba(56,189,248,.5);
+}
+
+summary{
+  cursor:pointer;
+  font-weight:600;
+  color:var(--blue);
+  font-size:17px;
+}
+
+details p{
+  margin-top:14px;
+  color:#f1f5f9;
+}
+
+@media(max-width:820px){
+  section{padding:40px 18px;}
+  h2{font-size:36px;}
+  .card{padding:28px;}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="statsBG"></canvas>
+<div class="bg-overlay"></div>
+
+<section>
+<h2>Chapter 2 – Probability</h2>
+
+<!-- ================= CONTENT START ================= -->
+
+<div class="card">
+<h3>What is Probability?</h3>
+<p>
+Probability is a branch of mathematics that deals with measuring uncertainty.
+It helps us determine how likely an event is to occur under given conditions.
+The value of probability always lies between 0 and 1.
+A probability of 0 represents an impossible event, whereas a probability of 1
+represents a certain event. Probability is widely used in science, engineering,
+economics, statistics, and daily life.
+</p>
+<ul>
+<li>0 → Impossible event</li>
+<li>1 → Certain event</li>
+</ul>
+<details>
+<summary>Click to see example & formula</summary>
+<p>
+If the probability of rain tomorrow is 0.7, it means there is a 70% chance of rain.<br><br>
+<b>Formula:</b>  
+P(E) = Number of favourable outcomes / Total number of outcomes
+</p>
+</details>
+</div>
+
+<div class="card">
+<h3>Sample Space and Event</h3>
+<p>
+The sample space is the set of all possible outcomes of a random experiment.
+It is denoted by S. An event is any subset of the sample space and represents
+one or more outcomes of interest. Understanding sample space is essential for
+calculating probability.
+</p>
+<details>
+<summary>Click to see example</summary>
+<p>
+Tossing a coin:  
+S = {H, T}  
+Event A (getting head) = {H}
+</p>
+</details>
+</div>
+
+<div class="card">
+<h3>Equally Likely Events</h3>
+<p>
+Events are equally likely when each outcome has the same probability of occurring.
+This concept applies mainly to fair experiments and is the basis of classical
+probability. It makes probability calculations simple and straightforward.
+</p>
+<details>
+<summary>Click to see example</summary>
+<p>
+In a fair letter dice {A, B, C, D, E, F}, each letter has probability 1/6.
+</p>
+</details>
+</div>
+
+<div class="card">
+<h3>Complementary Events</h3>
+<p>
+The complementary event of A consists of all outcomes that do not belong to A.
+If event A occurs, its complement cannot occur. The sum of probabilities of an
+event and its complement is always equal to 1.
+</p>
+<details>
+<summary>Click to see formula & example</summary>
+<p>
+<b>Formula:</b> P(A′) = 1 − P(A)<br><br>
+If P(A) = 0.4, then P(A′) = 0.6
+</p>
+</details>
+</div>
+
+<div class="card">
+<h3>Mutually Exclusive Events</h3>
+<p>
+Two events are mutually exclusive if they cannot occur at the same time.
+They have no common outcomes. This concept is important while applying
+the addition rule of probability.
+</p>
+<details>
+<summary>Click to see formula & example</summary>
+<p>
+<b>Formula:</b> P(A ∪ B) = P(A) + P(B)<br><br>
+Example: Getting A or F on a letter dice.
+</p>
+</details>
+</div>
+
+<div class="card">
+<h3>Independent Events</h3>
+<p>
+Events are independent if the occurrence of one does not affect the probability
+of the other. Independent events commonly occur in repeated experiments.
+</p>
+<details>
+<summary>Click to see formula & example</summary>
+<p>
+<b>Formula:</b> P(A ∩ B) = P(A) × P(B)<br><br>
+Example: Tossing two coins.
+</p>
+</details>
+</div>
+
+<div class="card">
+<h3>Dependent Events</h3>
+<p>
+Events are dependent when the occurrence of one affects the probability of the other.
+This usually happens in sampling without replacement.
+</p>
+<details>
+<summary>Click to see formula & example</summary>
+<p>
+<b>Formula:</b> P(A ∩ B) = P(A) × P(B|A)<br><br>
+Example: Drawing two cards from a deck without replacement.
+</p>
+</details>
+</div>
+
+<div class="card">
+<h3>Conditional Probability</h3>
+<p>
+Conditional probability is the probability of an event occurring given that another
+event has already occurred. It helps update probabilities using additional information.
+</p>
+<details>
+<summary>Click to see formula & example</summary>
+<p>
+<b>Formula:</b> P(A|B) = P(A ∩ B) / P(B)<br><br>
+Example: Probability of passing an exam given that the student studied.
+</p>
+</details>
+</div>
+
+<div class="card">
+<h3>Bayes’ Theorem</h3>
+<p>
+Bayes’ theorem is used to calculate the probability of an event based on prior knowledge.
+It plays a vital role in statistics, machine learning, and artificial intelligence.
+</p>
+<details>
+<summary>Click to see formula & example</summary>
+<p>
+<b>Formula:</b><br>
+P(A|B) = [P(B|A) × P(A)] / P(B)<br><br>
+Spam filtering based on keywords in emails.
+</p>
+</details>
+</div>
+
+<div class="card">
+<h3>What I Learnt in This Chapter</h3>
+<ul>
+<li>Meaning and importance of probability</li>
+<li>Difference between independent and dependent events</li>
+<li>Use of conditional probability and Bayes’ theorem</li>
+<li>Application of probability in real life</li>
+<li>Better decision making using probability</li>
+</ul>
+</div>
+
+<!-- ================= CONTENT END ================= -->
+
+</section>
+
+<script>
+const canvas = document.getElementById("statsBG");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+}
+resize();
+addEventListener("resize", resize);
+
+const points=[];
+const COUNT=80;
+
+for(let i=0;i<COUNT;i++){
+  points.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    vx:(Math.random()-0.5)*0.25,
+    vy:(Math.random()-0.5)*0.25
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  for(let i=0;i<COUNT;i++){
+    for(let j=i+1;j<COUNT;j++){
+      const dx=points[i].x-points[j].x;
+      const dy=points[i].y-points[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<120){
+        ctx.strokeStyle="rgba(150,170,255,0.12)";
+        ctx.beginPath();
+        ctx.moveTo(points[i].x,points[i].y);
+        ctx.lineTo(points[j].x,points[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  points.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>canvas.width) p.vx*=-1;
+    if(p.y<0||p.y>canvas.height) p.vy*=-1;
+    ctx.fillStyle="rgba(210,220,255,0.6)";
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,2.2,0,Math.PI*2);
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
